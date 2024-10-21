@@ -61,7 +61,7 @@ IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
 
 # ======= C ======= #
 # 昌原云充
-DOMAIN, m.adyounger.com, REJECT
+# DOMAIN, m.adyounger.com, REJECT
 
 # Clue 智库
 DOMAIN, api.helloclue.com, REJECT
