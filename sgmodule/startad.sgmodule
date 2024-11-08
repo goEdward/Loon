@@ -140,6 +140,7 @@ DOMAIN,id.hadron.ad.gt,REJECT,extended-matching
 # 太平洋保险
 DOMAIN,a.cpic.com.cn,REJECT,extended-matching
 # 腾讯
+DOMAIN-KEYWORD,h.trace.qq.com,DIRECT,extended-matching
 DOMAIN-KEYWORD,trace.qq.com,REJECT,extended-matching
 DOMAIN-KEYWORD,trace.video.qq.com,REJECT,extended-matching
 DOMAIN-SUFFIX,gdt.qq.com,REJECT,extended-matching
