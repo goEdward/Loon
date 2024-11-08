@@ -287,6 +287,8 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) data-type=text data="{}" status-code=200
 
 [Script]
+移除百度搜索首页信息流广告 = type=http-response, pattern="^https?:\/\/(www|m)\.baidu\.com\/?($|\?from=\w{8,9})", script-path=https://kelee.one/Resource/Script/BaiduSearch/BaiduSearchHomePage_remove_ads.js, requires-body=true
+
 # 微博开屏广告 //*.uve.weibo.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
@@ -330,4 +332,4 @@ wechat = type=http-response, pattern=^https\:\/\/(?:weixin110\.qq|security\.wech
 mi_mall = type=http-response, pattern=^https:\/\/api\.m\.mi\.com\/v1\/app\/start, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/myBlockAds.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, patientgate.91160.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, m5.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
+hostname = %APPEND% m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, patientgate.91160.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, m5.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
