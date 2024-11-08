@@ -297,7 +297,7 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 # 高德开屏广告 m5.amap.com
-移除开屏广告 = type=http-response, pattern=^https:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen?, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/amap.js, requires-body=true
+移除开屏广告 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
 
 # 哔哩哔哩开屏广告 app.bilibili.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/bilibili/json.js, requires-body=true
@@ -332,4 +332,4 @@ wechat = type=http-response, pattern=^https\:\/\/(?:weixin110\.qq|security\.wech
 mi_mall = type=http-response, pattern=^https:\/\/api\.m\.mi\.com\/v1\/app\/start, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/myBlockAds.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, patientgate.91160.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, *.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
+hostname = %APPEND% m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, patientgate.91160.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, m5.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
