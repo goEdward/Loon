@@ -5,6 +5,9 @@
 #!date=2024-10-15 10:05
 
 [Rule]
+# 闲鱼开屏广告
+AND,((URL-REGEX,"^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch",extended-matching),(USER-AGENT,"%E9%97%B2%E9%B1%BC*")),REJECT
+
 # 健康160 放行请求 patientgate.91160.com
 URL-REGEX,"^https:\/\/patientgate\.91160\.com\/advert-api\/v1\/advert\/homepage_icon\?",DIRECT,extended-matching
 # 健康160 广告下发 patientgate.91160.com
