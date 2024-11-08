@@ -68,7 +68,7 @@ AND, ((OR,((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-
 DOMAIN-KEYWORD,-ad-sign.byteimg.com,REJECT,extended-matching
 DOMAIN-KEYWORD,ads.g.doubleclick,REJECT,extended-matching
 DOMAIN-KEYWORD,asiad.byteactivity,REJECT,extended-matching
-DOMAIN-KEYWORD,pangolin-sdk-toutiao-b,direct,extended-matching
+DOMAIN-KEYWORD,pangolin-sdk-toutiao-b,DIRECT,extended-matching
 DOMAIN-KEYWORD,pangolin-sdk-toutiao,REJECT,extended-matching
 DOMAIN-KEYWORD,pangolin.snssdk.com,REJECT,extended-matching
 DOMAIN-KEYWORD,pglstatp-toutiao,REJECT,extended-matching
