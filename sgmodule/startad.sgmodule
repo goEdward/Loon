@@ -5,6 +5,14 @@
 #!date=2024-10-15 10:05
 
 [Rule]
+# 微博开屏广告
+DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching
+# 微博拦截HTTPDNS
+DOMAIN,dns.weibo.cn,REJECT,extended-matching
+IP-CIDR,39.97.130.51/32,REJECT,no-resolve
+IP-CIDR,39.97.128.148/32,REJECT,no-resolve
+URL-REGEX,"^http:\/\/api\.weibo\.cn\/2\/httpdns\/config",REJECT,extended-matching
+URL-REGEX,"^http:\/\/api\.weibo\.cn\/httpdns\/config",REJECT,extended-matching
 # 高德移除广告下发请求
 AND, ((URL-REGEX, ^http:\/\/(?:[\d\.]+|amdc\.m\.taobao\.com)\/amdc\/mobileDispatch), (USER-AGENT, AMapiPhone*)), REJECT
 # 哔哩哔哩开屏广告
@@ -180,6 +188,11 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 
 [Map Local]
+# 微博开屏广告 //*.uve.weibo.com
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime data-type=text data="{}" status-code=200
+
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
+
 # 哔哩哔哩开屏广告 api.bilibili.com
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) data-type=text data="{}" status-code=200
 
@@ -261,6 +274,13 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) data-type=text data="{}" status-code=200
 
 [Script]
+# 微博开屏广告 //*.uve.weibo.com
+移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
+移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
+移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
 # 高德开屏广告 m5.amap.com
 http-response ^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? script-path = https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/amap.js, requires-body = true, tag = 移除开屏广告
 
@@ -297,4 +317,4 @@ wechat = type=http-response, pattern=^https\:\/\/(?:weixin110\.qq|security\.wech
 mi_mall = type=http-response, pattern=^https:\/\/api\.m\.mi\.com\/v1\/app\/start, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/myBlockAds.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% app.bilibili.com, api.bilibili.com, m5.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, m5.amap.com, ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, mp.weixin.qq.com, weixin110.qq.com, security.wechat.com, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com
