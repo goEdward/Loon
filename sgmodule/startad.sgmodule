@@ -157,10 +157,7 @@ DOMAIN,tmeadbak.y.qq.com,REJECT,extended-matching
 DOMAIN,tmeadcomm.y.qq.com,REJECT,extended-matching
 DOMAIN,tpns.qq.com,REJECT,extended-matching
 IP-CIDR,47.110.187.87/32,REJECT,extended-matching,no-resolve
-# 微信
-# DOMAIN-SUFFIX,wxs.qq.com,REJECT,extended-matching
-# DOMAIN,badjs.weixinbridge.com,REJECT,extended-matching
-# DOMAIN,dns.weixin.qq.com.cn,REJECT,extended-matching
+
 # 小米
 DOMAIN,sdkconfig.ad.xiaomi.com,REJECT,extended-matching
 # 云闪付 开屏广告
@@ -261,19 +258,13 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 
 ^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ data-type=text data="{}" status-code=200
 
-# 微信 //mp.weixin.qq.com
-# ^https:\/\/mp\.weixin\.qq\.com\/mp\/(?:cps_product_info|getappmsgad|jsmonitor|masonryfeed|relatedarticle) data-type=text data="{}" status-code=200
-
-# ^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) data-type=text data="{}" status-code=200
-
-# ^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) data-type=text data="{}" status-code=200
-
 # 米家 //home.mi.com
 ^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) data-type=text data="{}" status-code=200
 
 [Script]
 #薄荷健康 api.boohee.com, healthy.boohee.com, one.boohee.com, league.boohee.com
 bhh = type=http-response, pattern=https:\/\/(api|healthy|one|league)\.boohee\.com, script-path=https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/bhh.js, requires-body=true, max-size=-1, timeout=60
+
 # 什么值得买_开屏去广告 app-api.smzdm.com
 什么值得买_开屏去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
@@ -309,12 +300,6 @@ jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.actio
 
 # 酷安 //api.coolapk.com
 coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/coolapk.js, requires-body=true
-
-# 微信封禁页面 //weixin110.qq.com, security.wechat.com
-# wechat = type=http-response, pattern=^https\:\/\/(?:weixin110\.qq|security\.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/wechat/unlockUrls.js, requires-body=true
-
-# 小米商城 //api.m.mi.com, shop-api.retail.mi.com
-# mi_mall = type=http-response, pattern=^https:\/\/api\.m\.mi\.com\/v1\/app\/start, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/myBlockAds.js, requires-body=true
 
 [MITM]
 hostname = %APPEND% api.boohee.com, healthy.boohee.com, one.boohee.com, league.boohee.com, app-api.smzdm.com, m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, app.bilibili.com, api.bilibili.com, m5.amap.com, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, home.mi.com, wallet.95516.com
