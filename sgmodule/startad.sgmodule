@@ -108,9 +108,9 @@ DOMAIN,tangram.e.qq.com,REJECT,extended-matching
 DOMAIN,ws.tapjoyads.com,REJECT,extended-matching
 DOMAIN,www.googleadservices.com,REJECT,extended-matching
 # httpdns
-DOMAIN-KEYWORD,httpdns.,REJECT,extended-matching
-DOMAIN-KEYWORD,httpdns-,REJECT,extended-matching
-DOMAIN,hdns.ksyun.com,REJECT,extended-matching
+#DOMAIN-KEYWORD,httpdns.,REJECT,extended-matching
+#DOMAIN-KEYWORD,httpdns-,REJECT,extended-matching
+#DOMAIN,hdns.ksyun.com,REJECT,extended-matching
 # 建设银行
 DOMAIN-KEYWORD,adv.ccb.com,REJECT,extended-matching
 # 京东
