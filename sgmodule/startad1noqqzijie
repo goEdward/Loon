@@ -184,8 +184,6 @@ bhh = type=http-response, pattern=https:\/\/(api|healthy|one|league)\.boohee\.co
 # 哔哩哔哩开屏广告 app.bilibili.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/bilibili/json.js, requires-body=true
 
-body_rewrite_274 = type=http-response, pattern=^https:\/\/api\.m\.mi\.com\/v1\/order\/expressView, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.bottom.ad_info%22%5D%5D%5D
-
 # 阿里云盘 //*api.alipan.com, member.alipan.com
 aliyun_mine = type=http-response, pattern=^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/adrive.js, requires-body=true
 
