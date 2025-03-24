@@ -143,7 +143,7 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
 
 # 京东 //api.m.jd.com
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
 
 # 交管12123 //gab.122.gov.cn
 ^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver data-type=text data="{}" status-code=200
@@ -195,8 +195,8 @@ taobao_1 = type=http-response, pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\
 taobao_2 = type=http-response, pattern=^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json, script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/myBlockAds.js, requires-body=true
 
 # 京东 //api.m.jd.com
-jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/jingdong.js, requires-body=true
-
+jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://kelee.one/Resource/Script/JD/JD_remove_ads.js, requires-body=true
+# https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/jingdong.js
 # 酷安 //api.coolapk.com
 coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/coolapk.js, requires-body=true
 
