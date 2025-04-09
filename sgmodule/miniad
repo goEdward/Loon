@@ -29,8 +29,6 @@ IP-CIDR,180.76.76.112/32,REJECT,extended-matching,no-resolve
 IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 # DNS 无响应
 DOMAIN,adttrackingprd.hwwt8.com,REJECT,extended-matching
-# 建设银行
-DOMAIN-KEYWORD,adv.ccb.com,REJECT,extended-matching
 # Outlook
 DOMAIN,acdn.adnxs.com,REJECT,extended-matching
 DOMAIN,mediation.adnxs.com,REJECT,extended-matching
@@ -42,28 +40,22 @@ DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
 # 爱思助手 //list-app-m.i4.cn
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 
-
 [Map Local]
 # 微博开屏广告 //*.uve.weibo.com
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime data-type=text data="{}" status-code=200
-
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
 
 # 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
-
-^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
-
+#^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
 
 [Script]
 移除百度搜索首页信息流广告 = type=http-response, pattern="^https?:\/\/(www|m)\.baidu\.com\/?($|\?from=\w{8,9})", script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/baidu/baiduNoRedirect.js, requires-body=true
 
 # 微博开屏广告 //*.uve.weibo.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
-
 移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
-
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
+hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com
