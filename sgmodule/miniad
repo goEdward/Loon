@@ -17,20 +17,24 @@ IP-CIDR,39.97.130.51/32,REJECT,no-resolve
 IP-CIDR,39.97.128.148/32,REJECT,no-resolve
 URL-REGEX,"^http:\/\/api\.weibo\.cn\/2\/httpdns\/config",REJECT,extended-matching
 URL-REGEX,"^http:\/\/api\.weibo\.cn\/httpdns\/config",REJECT,extended-matching
+
 # 安全浏览限制解除
 DOMAIN-KEYWORD,safebrowsing.,REJECT,extended-matching
-DOMAIN-SUFFIX,u3.ucweb.com,REJECT,extended-matching
 DOMAIN,lookup.api.bsb.baidu.com,REJECT,extended-matching
+
 # 百度
 DOMAIN-SUFFIX,pos.baidu.com,REJECT,extended-matching
 DOMAIN,mobads.baidu.com,REJECT,extended-matching
+
 # 百度地图
+DOMAIN,httpdns.baidubce.com,REJECT,extended-matching
 DOMAIN,afd.baidu.com,REJECT,extended-matching
 DOMAIN,afdconf.baidu.com,REJECT,extended-matching
 DOMAIN,lc.map.baidu.com,REJECT,extended-matching
 # 百度
 IP-CIDR,180.76.76.112/32,REJECT,extended-matching,no-resolve
 IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
+
 # DNS 无响应
 DOMAIN,adttrackingprd.hwwt8.com,REJECT,extended-matching
 # Outlook
@@ -45,6 +49,10 @@ DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 
 [Map Local]
+# 百度地图 ecom.map.baidu.com, afd.baidu.com
+^https:\/\/ecom\.map\.baidu\.com\/ad-ops\/afd\/popup\? data-type=text data="{}" status-code=200
+^https:\/\/afd\.baidu\.com\/afd\/entry\?action=(update|query) data-type=text data="{}" status-code=200
+
 # 哔哩哔哩开屏广告 api.bilibili.com
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) data-type=text data="{}" status-code=200
 
@@ -71,4 +79,4 @@ DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com
+hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, ecom.map.baidu.com, afd.baidu.com
