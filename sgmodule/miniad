@@ -1,0 +1,69 @@
+#!name=miniad
+#!desc=地区改台北香港
+#!author=N
+#!icon=https://github.com/goEdward/Loon/blob/main/Icons/app/myblockads.png?raw=true
+#!date=2025-04-09 18:55
+
+[Rule]
+# 微博开屏广告
+DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching
+# 微博拦截HTTPDNS
+DOMAIN,dns.weibo.cn,REJECT,extended-matching
+IP-CIDR,39.97.130.51/32,REJECT,no-resolve
+IP-CIDR,39.97.128.148/32,REJECT,no-resolve
+URL-REGEX,"^http:\/\/api\.weibo\.cn\/2\/httpdns\/config",REJECT,extended-matching
+URL-REGEX,"^http:\/\/api\.weibo\.cn\/httpdns\/config",REJECT,extended-matching
+# 安全浏览限制解除
+DOMAIN-KEYWORD,safebrowsing.,REJECT,extended-matching
+DOMAIN-SUFFIX,u3.ucweb.com,REJECT,extended-matching
+DOMAIN,lookup.api.bsb.baidu.com,REJECT,extended-matching
+# 百度
+DOMAIN-SUFFIX,pos.baidu.com,REJECT,extended-matching
+DOMAIN,mobads.baidu.com,REJECT,extended-matching
+# 百度地图
+DOMAIN,afd.baidu.com,REJECT,extended-matching
+DOMAIN,afdconf.baidu.com,REJECT,extended-matching
+DOMAIN,lc.map.baidu.com,REJECT,extended-matching
+# 百度
+IP-CIDR,180.76.76.112/32,REJECT,extended-matching,no-resolve
+IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
+# DNS 无响应
+DOMAIN,adttrackingprd.hwwt8.com,REJECT,extended-matching
+# 建设银行
+DOMAIN-KEYWORD,adv.ccb.com,REJECT,extended-matching
+# Outlook
+DOMAIN,acdn.adnxs.com,REJECT,extended-matching
+DOMAIN,mediation.adnxs.com,REJECT,extended-matching
+DOMAIN,sin3-ib.adnxs.com,REJECT,extended-matching
+# 数字联盟
+DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
+
+[URL Rewrite]
+# 爱思助手 //list-app-m.i4.cn
+^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
+
+
+[Map Local]
+# 微博开屏广告 //*.uve.weibo.com
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime data-type=text data="{}" status-code=200
+
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
+
+# 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
+
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
+
+
+[Script]
+移除百度搜索首页信息流广告 = type=http-response, pattern="^https?:\/\/(www|m)\.baidu\.com\/?($|\?from=\w{8,9})", script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/baidu/baiduNoRedirect.js, requires-body=true
+
+# 微博开屏广告 //*.uve.weibo.com
+移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
+移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
+移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
+
+[MITM]
+hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
