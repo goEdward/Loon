@@ -27,21 +27,16 @@ DOMAIN-SUFFIX,pos.baidu.com,REJECT,extended-matching
 DOMAIN,mobads.baidu.com,REJECT,extended-matching
 
 # 百度地图
-IP-CIDR,186.76.76.200/32,REJECT,no-resolve
+IP-CIDR,186.76.76.200/32,REJECT,extended-matching,no-resolve
 DOMAIN,httpdns.baidubce.com,REJECT,extended-matching
 DOMAIN,afd.baidu.com,REJECT,extended-matching
 DOMAIN,afdconf.baidu.com,REJECT,extended-matching
 DOMAIN,lc.map.baidu.com,REJECT,extended-matching
+
 # 百度
 IP-CIDR,180.76.76.112/32,REJECT,extended-matching,no-resolve
 IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 
-# DNS 无响应
-DOMAIN,adttrackingprd.hwwt8.com,REJECT,extended-matching
-# Outlook
-DOMAIN,acdn.adnxs.com,REJECT,extended-matching
-DOMAIN,mediation.adnxs.com,REJECT,extended-matching
-DOMAIN,sin3-ib.adnxs.com,REJECT,extended-matching
 # 数字联盟
 DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
 
@@ -50,10 +45,6 @@ DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml - reject
 
 [Map Local]
-# 百度地图 ecom.map.baidu.com, afd.baidu.com
-# ^https:\/\/afd\.baidu\.com\/afd\/entry\?action=(update|query) data-type=text data="{}" status-code=200
-# ^https:\/\/ecom\.map\.baidu\.com\/ad-ops\/afd\/popup\? data-type=text data="{}" status-code=200
-
 # 哔哩哔哩开屏广告 api.bilibili.com
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) data-type=text data="{}" status-code=200
 
@@ -72,22 +63,13 @@ coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\
 # 哔哩哔哩开屏广告 app.bilibili.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(?:brand\/list|event\/list2|list|show), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/bilibili/json.js, requires-body=true
 
-移除百度搜索首页信息流广告 = type=http-response, pattern="^https?:\/\/(www|m)\.baidu\.com\/?($|\?from=\w{8,9})", script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/baidu/baiduNoRedirect.js, requires-body=true
-
 # 微博开屏广告 //*.uve.weibo.com
 移除开屏广告 = type=http-response, pattern=^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
-# 百度地图 newclient.map.baidu.com
-# 百度地图_开屏广告
+# 百度地图_开屏广告 newclient.map.baidu.com
 body_rewrite_19 = type=http-response, pattern=^https:\/\/newclient\.map\.baidu\.com\/client\/phpui2\/\?qt=ads&type=user_home_new_service, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22ads%22%5D%5D%5D
-# 首页底部推荐
-# body_rewrite_16 = type=http-response, pattern=^https:\/\/newclient\.map\.baidu\.com\/feed\/govui\/rich_content, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data%22%5D%5D%5D
-# body_rewrite_17 = type=http-response, pattern=^https:\/\/newclient\.map\.baidu\.com\/client\/noticebar\/get\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22content.multi_data%22%5D%5D%5D
-# 各种商业推广
-# body_rewrite_18 = type=http-response, pattern=^https:\/\/newclient\.map\.baidu\.com\/(client\/)?usersystem\/mine\/page\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22data%22%2C%7B%7D%5D%5D%5D%5D
-# body_rewrite_26 = type=http-response, pattern=^https:\/\/newclient\.map\.baidu\.com\/living\/nearby\/api\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22Result.cards%5B1%5D%22%2C%22Result.cards%5B4%5D%22%2C%22Result.cards%5B5%5D%22%2C%22Result.cards%5B9%5D%22%5D%5D%5D
 
 [MITM]
-hostname = %APPEND% m.baidu.com, www.baidu.com, *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, newclient.map.baidu.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, list-app-m.i4.cn, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, newclient.map.baidu.com
