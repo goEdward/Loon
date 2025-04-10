@@ -140,8 +140,6 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 # 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
 
-# ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
-
 # 京东 //api.m.jd.com
 ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
 
@@ -197,8 +195,9 @@ taobao_2 = type=http-response, pattern=^https:\/\/poplayer\.template\.alibaba\.c
 # 京东 //api.m.jd.com
 jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://kelee.one/Resource/Script/JD/JD_remove_ads.js, requires-body=true
 # https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/jingdong.js
+
 # 酷安 //api.coolapk.com
 coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/coolapk.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% app.bilibili.com, api.bilibili.com, api.boohee.com, healthy.boohee.com, one.boohee.com, league.boohee.com, app-api.smzdm.com, m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, m5.amap.com, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, wallet.95516.com
+hostname = %APPEND% app.bilibili.com, api.bilibili.com, api.boohee.com, healthy.boohee.com, one.boohee.com, league.boohee.com, app-api.smzdm.com, m.baidu.com, www.baidu.com, bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, m5.amap.com, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, api.douban.com, api.m.jd.com, gab.122.gov.cn, api.coolapk.com, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, wallet.95516.com
