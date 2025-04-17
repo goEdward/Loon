@@ -69,6 +69,14 @@ DOMAIN,tmeadcomm.y.qq.com,REJECT,extended-matching
 DOMAIN,tpns.qq.com,REJECT,extended-matching
 IP-CIDR,47.110.187.87/32,REJECT,extended-matching,no-resolve
 
+# httpdns
+DOMAIN-KEYWORD,httpdns.,REJECT,extended-matching
+DOMAIN-KEYWORD,httpdns-,REJECT,extended-matching
+DOMAIN,hdns.ksyun.com,REJECT,extended-matching
+
+# 数字联盟
+DOMAIN-SUFFIX,shuzilm.cn,REJECT,extended-matching
+
 # 哔哩哔哩开屏广告
 URL-REGEX,"^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
 URL-REGEX,"^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
