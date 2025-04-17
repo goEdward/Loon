@@ -5,10 +5,50 @@
 #!date=2025-04-09 18:55
 
 [Rule]
+DOMAIN-SUFFIX,mall.icbc.com.cn,REJECT,extended-matching
+DOMAIN,pageviewp.icbc.com.cn,REJECT,extended-matching
+AND, ((OR,((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-KEYWORD,-misc-)), REJECT
+DOMAIN-KEYWORD,-ad-sign.byteimg.com,REJECT,extended-matching
+DOMAIN-KEYWORD,ads.g.doubleclick,REJECT,extended-matching
+DOMAIN-KEYWORD,asiad.byteactivity,REJECT,extended-matching
 DOMAIN-KEYWORD,pangolin-sdk-toutiao-b,DIRECT,extended-matching
 DOMAIN-KEYWORD,pangolin-sdk-toutiao,REJECT,extended-matching
+DOMAIN-KEYWORD,pangolin.snssdk.com,REJECT,extended-matching
 DOMAIN-KEYWORD,pglstatp-toutiao,REJECT,extended-matching
+DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT,extended-matching
+DOMAIN-SUFFIX,ads.linkedin.com,REJECT,extended-matching
+DOMAIN-SUFFIX,ads.vungle.com,REJECT,extended-matching
+DOMAIN-SUFFIX,adservice.google.com,REJECT,extended-matching
+DOMAIN-SUFFIX,adukwai.com,REJECT,extended-matching
+DOMAIN-SUFFIX,applovin.com,REJECT,extended-matching
+DOMAIN-SUFFIX,applvn.com,REJECT,extended-matching
+DOMAIN-SUFFIX,appsflyer.com,REJECT,extended-matching
+DOMAIN-SUFFIX,appsflyersdk.com,REJECT,extended-matching
+DOMAIN-SUFFIX,kuaishouzt.com,REJECT,extended-matching
+DOMAIN-SUFFIX,miaozhen.com,REJECT,extended-matching
+DOMAIN-SUFFIX,ubixioe.com,REJECT,extended-matching
+DOMAIN-SUFFIX,unityads.unity3d.com,REJECT,extended-matching
+DOMAIN-SUFFIX,v.smtcdns.com,REJECT,extended-matching
+DOMAIN,ad.zijieapi.com,REJECT,extended-matching
+DOMAIN,adapi.izuiyou.com,REJECT,extended-matching
+DOMAIN,adtracker.adfunlink.com,REJECT,extended-matching
+DOMAIN,dig.bdurl.net,REJECT,extended-matching
+DOMAIN,dsp-x.jd.com,REJECT,extended-matching
+DOMAIN,et.tanx.com,REJECT,extended-matching
+DOMAIN,gdfp.gifshow.com,REJECT,extended-matching
+DOMAIN,init.supersonicads.com,REJECT,extended-matching
+DOMAIN,janapi.jd.com,REJECT,extended-matching
+DOMAIN,lf-ad-ies.bytecdn.cn,REJECT,extended-matching
+DOMAIN,mercury-gateway.ixiaochuan.cn,REJECT,extended-matching
 DOMAIN,mon.toutiaocloud.com,REJECT,extended-matching
+DOMAIN,open.e.kuaishou.com,REJECT,extended-matching
+DOMAIN,open.kuaishou.com,REJECT,extended-matching
+DOMAIN,pagead2.googlesyndication-cn.com,REJECT,extended-matching
+DOMAIN,pagead2.googlesyndication.com,REJECT,extended-matching
+DOMAIN,sdk.e.qq.com,REJECT,extended-matching
+DOMAIN,tangram.e.qq.com,REJECT,extended-matching
+DOMAIN,ws.tapjoyads.com,REJECT,extended-matching
+DOMAIN,www.googleadservices.com,REJECT,extended-matching
 
 # 哔哩哔哩开屏广告
 URL-REGEX,"^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
@@ -50,9 +90,11 @@ IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 
 # 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
-^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ data-type=text data="{}" status-code=200
-#^https:\/\/api\.douban\.com\/b.*\/common_ads\?.* data-type=text data="{}" status-code=200
-#^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
+# ^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ data-type=text data="{}" status-code=200
+# ^https:\/\/api\.douban\.com\/b.*\/common_ads\?.* data-type=text data="{}" status-code=200
+# ^https?:\/\/img\d\.doubanio\.com\/view\/dale-online\/dale_ad\/ data-type=text data="{}" status-code=200
+# ^https?:\/\/erebor\.douban\.com\/count\/\?ad=  data-type=text data="{}" status-code=200
+# ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
 
 [Script]
 # 酷安 //api.coolapk.com
