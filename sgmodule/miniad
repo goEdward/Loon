@@ -50,6 +50,25 @@ DOMAIN,tangram.e.qq.com,REJECT,extended-matching
 DOMAIN,ws.tapjoyads.com,REJECT,extended-matching
 DOMAIN,www.googleadservices.com,REJECT,extended-matching
 
+# 腾讯
+DOMAIN-KEYWORD,h.trace.qq.com,DIRECT,extended-matching
+DOMAIN-KEYWORD,trace.qq.com,REJECT,extended-matching
+DOMAIN-KEYWORD,trace.video.qq.com,REJECT,extended-matching
+DOMAIN-SUFFIX,gdt.qq.com,REJECT,extended-matching
+DOMAIN-SUFFIX,l.qq.com,REJECT,extended-matching
+DOMAIN,adsmind.gdtimg.com,REJECT,extended-matching
+DOMAIN,info4.video.qq.com,REJECT,extended-matching
+DOMAIN,info6.video.qq.com,REJECT,extended-matching
+DOMAIN,ios.video.mpush.qq.com,REJECT,extended-matching
+DOMAIN,otheve.beacon.qq.com,REJECT,extended-matching
+DOMAIN,pgdt.gtimg.cn,REJECT,extended-matching
+DOMAIN,pgdt.ugdtimg.com,REJECT,extended-matching
+DOMAIN,tmead.y.qq.com,REJECT,extended-matching
+DOMAIN,tmeadbak.y.qq.com,REJECT,extended-matching
+DOMAIN,tmeadcomm.y.qq.com,REJECT,extended-matching
+DOMAIN,tpns.qq.com,REJECT,extended-matching
+IP-CIDR,47.110.187.87/32,REJECT,extended-matching,no-resolve
+
 # 哔哩哔哩开屏广告
 URL-REGEX,"^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
 URL-REGEX,"^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
