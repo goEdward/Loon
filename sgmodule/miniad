@@ -5,6 +5,11 @@
 #!date=2025-04-09 18:55
 
 [Rule]
+DOMAIN-KEYWORD,pangolin-sdk-toutiao-b,DIRECT,extended-matching
+DOMAIN-KEYWORD,pangolin-sdk-toutiao,REJECT,extended-matching
+DOMAIN-KEYWORD,pglstatp-toutiao,REJECT,extended-matching
+DOMAIN,mon.toutiaocloud.com,REJECT,extended-matching
+
 # 哔哩哔哩开屏广告
 URL-REGEX,"^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
 URL-REGEX,"^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
@@ -45,7 +50,7 @@ IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 
 # 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
-^https:\/\/api\.douban\.com\/b.*\/common_ads\?.* data-type=text data="{}" status-code=200
+#^https:\/\/api\.douban\.com\/b.*\/common_ads\?.* data-type=text data="{}" status-code=200
 #^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
 
 [Script]
