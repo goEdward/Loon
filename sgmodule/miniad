@@ -5,8 +5,11 @@
 #!date=2025-04-09 18:55
 
 [Rule]
-DOMAIN-SUFFIX,mall.icbc.com.cn,REJECT,extended-matching
-DOMAIN,pageviewp.icbc.com.cn,REJECT,extended-matching
+# 京东
+DOMAIN,dns.jd.com,REJECT,extended-matching
+IP-CIDR,101.124.19.122/32,REJECT,extended-matching,no-resolve
+IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,extended-matching,no-resolve
+
 AND, ((OR,((DOMAIN-SUFFIX, amemv.com), (DOMAIN-SUFFIX, zijieapi.com))), (DOMAIN-KEYWORD,-misc-)), REJECT
 DOMAIN-KEYWORD,-ad-sign.byteimg.com,REJECT,extended-matching
 DOMAIN-KEYWORD,ads.g.doubleclick,REJECT,extended-matching
@@ -105,11 +108,17 @@ DOMAIN,lc.map.baidu.com,REJECT,extended-matching
 IP-CIDR,180.76.76.112/32,REJECT,extended-matching,no-resolve
 IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 
+# ======= REGEX ======= #
+# 京东
+URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
+
 [URL Rewrite]
 
 [Map Local]
 # 京东开屏  m.360buyimg.com
 ^https?:\/\/m\.360buyimg\.com\/mobilecms\/s1125x2436_jfs data-type=text data="{}" status-code=200
+# 京东 //api.m.jd.com
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
 
 # 哔哩哔哩开屏广告 api.bilibili.com
 ^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) data-type=text data="{}" status-code=200
@@ -127,6 +136,9 @@ IP-CIDR,180.76.76.200/32,REJECT,extended-matching,no-resolve
 # ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ data-type=text data="{}" status-code=200
 
 [Script]
+# 京东 //api.m.jd.com
+jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/jingdong.js, requires-body=true
+
 # 酷安 //api.coolapk.com
 coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\/detail|feed\/replyList|page\/dataList|main\/dataList|main\/indexV8|main\/init), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/coolapk.js, requires-body=true
 
@@ -139,4 +151,4 @@ coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, m.360buyimg.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.douban.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, m.360buyimg.com, api.m.jd.com
