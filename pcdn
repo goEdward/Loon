@@ -27,11 +27,11 @@ DOMAIN,p2pupgrade.gamedl.qq.com,REJECT
 DOMAIN,pcdn.yximgs.com,REJECT
 DOMAIN,stun.hitv.com,REJECT
 
-# --- 正则匹配规则 ---
-# 注意: Surge 的 DOMAIN-REGEX 匹配的是整个域名字符串
-DOMAIN-REGEX,.*pcdn.*biliapi\.net,REJECT
-DOMAIN-REGEX,.*pcdn.*youku\.com,REJECT
-DOMAIN-REGEX,.*p2p.*qq\.com,REJECT
+# --- 正则匹配规则 (Using URL-REGEX) ---
+# Note: URL-REGEX matches the entire URL string.
+# These patterns attempt to match the domain portion containing the keywords.
+URL-REGEX,^https?://.*pcdn.*\.(biliapi\.net|youku\.com)/,REJECT
+URL-REGEX,^https?://.*p2p.*\.qq\.com/,REJECT
 
 # --- 斗鱼规则 ---
 DOMAIN-SUFFIX,stun.douyucdn.cn,REJECT
@@ -47,3 +47,10 @@ DOMAIN-SUFFIX,p2plive-ali.douyucdn.cn,REJECT
 DOMAIN-SUFFIX,p2plive-ws.douyucdn.cn,REJECT
 DOMAIN-SUFFIX,p2plog.douyucdn.cn,REJECT
 DOMAIN-SUFFIX,p2pvod-ws.douyucdn.cn,REJECT
+
+# --- Alternative using DOMAIN-KEYWORD (Simpler but broader match) ---
+# If the URL-REGEX above are too complex or cause issues,
+# you could consider DOMAIN-KEYWORD, but be aware they might block more than intended.
+# Example (use with caution):
+# DOMAIN-KEYWORD,pcdn,REJECT
+# DOMAIN-KEYWORD,p2p,REJECT
