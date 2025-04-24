@@ -1,0 +1,49 @@
+# Surge Rule - Custom CDN/P2P Blocklist
+# Description: Blocks various CDN and P2P domains based on the provided list.
+
+# --- 通用 CDN 域名 ---
+DOMAIN-SUFFIX,bsccdn.net,REJECT
+DOMAIN-SUFFIX,gjfzpt.cn,REJECT
+DOMAIN-SUFFIX,jomodns.cn,REJECT
+DOMAIN-SUFFIX,kuiniuca.com,REJECT
+DOMAIN-SUFFIX,pkoplink.com,REJECT
+DOMAIN-SUFFIX,saxysec.com,REJECT
+DOMAIN-SUFFIX,szbdyd.com,REJECT
+DOMAIN-SUFFIX,uhabo.com,REJECT
+DOMAIN-SUFFIX,xycdn.com,REJECT
+
+# --- 视频平台 CDN ---
+DOMAIN-SUFFIX,mcdn.bilivideo.cn,REJECT
+DOMAIN-SUFFIX,onethingpcs.com,REJECT
+DOMAIN-SUFFIX,pcdn.xmcdn.com,REJECT
+DOMAIN-SUFFIX,tpa-hcdn.iqiyi.com,REJECT
+
+# --- P2P 相关域名 ---
+DOMAIN,p2p.huya.com,REJECT
+DOMAIN,p2p.qq.com,REJECT
+DOMAIN,p2ptun.qq.com,REJECT
+DOMAIN,p2pupdate.gamedl.qq.com,REJECT
+DOMAIN,p2pupgrade.gamedl.qq.com,REJECT
+DOMAIN,pcdn.yximgs.com,REJECT
+DOMAIN,stun.hitv.com,REJECT
+
+# --- 正则匹配规则 ---
+# 注意: Surge 的 DOMAIN-REGEX 匹配的是整个域名字符串
+DOMAIN-REGEX,.*pcdn.*biliapi\.net,REJECT
+DOMAIN-REGEX,.*pcdn.*youku\.com,REJECT
+DOMAIN-REGEX,.*p2p.*qq\.com,REJECT
+
+# --- 斗鱼规则 ---
+DOMAIN-SUFFIX,stun.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,stun1.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,dyp2p-ali.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,dyp2p-hw.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2p-ali.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2pchunk-hw.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2pchunk-table.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2pchunk-ws.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2perrorlog.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2plive-ali.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2plive-ws.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2plog.douyucdn.cn,REJECT
+DOMAIN-SUFFIX,p2pvod-ws.douyucdn.cn,REJECT
