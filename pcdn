@@ -1,5 +1,5 @@
 # Surge Rule - Custom CDN/P2P Blocklist
-# Description: Blocks various CDN and P2P domains based on the provided list.
+# Description: Blocks various CDN and P2P domains based on the provided list..
 
 # --- 通用 CDN 域名 ---
 DOMAIN-SUFFIX,bsccdn.net,REJECT
