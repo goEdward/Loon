@@ -46,9 +46,6 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 [URL Rewrite]
 
 [Map Local]
-# > Soul  soulapp.cn
-^https:\/\/data-collector\.soulapp\.cn\/api\/data\/report$ - reject
-
 # 豆瓣开屏 api.douban.com, frodo.douban.com, m.douban.com
 ^https:\/\/api\.douban\.com\/v\d\/app_ads\/splash data-type=text data="{}" status-code=200
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ data-type=text data="{}" status-code=200
@@ -86,4 +83,4 @@ coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, api.m.jd.com, m.360buyimg.com, api.douban.com, soulapp.cn
+hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, api.m.jd.com, m.360buyimg.com, api.douban.com
