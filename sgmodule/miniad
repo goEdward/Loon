@@ -68,6 +68,9 @@ URL-REGEX,^http:\/\/\w{32}\.jddebug\.com\/diagnose\?,REJECT,extended-matching
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
 
 [Script]
+# 高德 m5.amap.com
+移除开屏广告 = type=http-response, pattern=^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\?, script-path=https://kelee.one/Resource/Script/Amap/Amap_remove_ads.js, requires-body=true
+
 # 京东 //api.m.jd.com
 jingdong = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://raw.githubusercontent.com/goEdward/Loon/main/Scripts/jingdong.js, requires-body=true
 
@@ -83,4 +86,4 @@ coolapk = type=http-response, pattern=^https:\/\/api\.coolapk\.com\/v6\/(?:feed\
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://raw.githubusercontent.com/goEdward/Loon/refs/heads/main/Scripts/weibo.js, requires-body=true
 
 [MITM]
-hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, api.m.jd.com, m.360buyimg.com, api.douban.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, weibo.com, api.coolapk.com, api.bilibili.com, app.bilibili.com, api.m.jd.com, m.360buyimg.com, api.douban.com, m5.amap.com
