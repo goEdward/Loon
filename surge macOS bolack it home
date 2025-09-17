@@ -1,0 +1,46 @@
+#!name=屏蔽IT之家App跳转
+#!desc=屏蔽IT之家（ithome.com）网页试图调用其macOS客户端的行为，阻止“你要允许此网站打开‘ITHomeClientMacOS’吗？”的弹窗。
+#!author=YourName
+
+[MITM]
+hostname = %APPEND% *.ithome.com
+
+[Script]
+# 脚本类型为http-response，匹配IT之家网址，需要处理body，使用内联脚本
+BlockITHomeAppJump = type=http-response, pattern=^https?:\/\/(www|m)\.ithome\.com, requires-body=true, script-content=
+(function() {
+    // 检查响应头，确保是HTML页面，避免处理图片、CSS等资源
+    if (!$response.headers['Content-Type'] || !$response.headers['Content-Type'].indexOf('html') === -1) {
+        $done({});
+        return;
+    }
+
+    let body = $response.body;
+    
+    // 注入一段JavaScript脚本到页面底部
+    // 这段脚本会重写 window.open 函数
+    // 当检测到要打开的链接是 'ithomeclientmacos://' 协议时，就阻止它
+    const injection_script = `
+    <script>
+    (function() {
+        if (window.ihome_jump_blocked) return; // 防止重复注入
+        window.ihome_jump_blocked = true;
+
+        const original_open = window.open;
+        window.open = function(url) {
+            if (url && typeof url === 'string' && url.startsWith('ithomeclientmacos://')) {
+                console.log('Surge Module [Block-ITHome-App-Jump] blocked app jump to: ' + url);
+                return null; // 返回null来阻止跳转
+            }
+            // 对于其他正常的链接，继续使用原始的window.open函数
+            return original_open.apply(this, arguments);
+        };
+    })();
+    </script>
+    `;
+
+    // 将我们的脚本插入到 </body> 标签之前
+    body = body.replace('</body>', injection_script + '</body>');
+    
+    $done({body});
+})();
