@@ -1,0 +1,30 @@
+#!name = MyloonADs
+#!desc = MyloonADs
+#!author = https://github.com/goEdward/Loon
+#!icon = https://github.com/goEdward/Loon/blob/main/Icons/app/blockads.png?raw=true
+#!date = 2024-10-18 10:25
+
+[Rule]
+DOMAIN-SUFFIX,edward666.xyz,DIRECT
+DOMAIN,api.immtel.co,DIRECT
+DOMAIN-KEYWORD,paypal,DIRECT
+
+[Rewrite]
+# 豆瓣 api.douban.com
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
+# 小佩宠物 api.petkit.cn
+^https?:\/\/api\.petkit\.cn\/6\/\/device\/relatedProductsInfo reject-dict
+# 二柄 erbingeditor.diershoubing.com
+^https:\/\/erbingeditor\.diershoubing\.com\/4\/ reject-dict
+# NGA g1.tagtic.cn
+^https:\/\/g1\.tagtic\.cn reject-dict
+# 懂球帝 ap.dongqiudi.com
+^https?:\/\/ap\.dongqiudi\.com\/plat\/v reject-dict
+# 招商银行 webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com
+^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig reject-dict
+^https?:\/\/az1mbasecc\.bas\.cmbchina\.com\/Edge\/api\/mlife\.clientface\.clientservice\.api\.advertiseService\/preCacheAdvertiseSec reject-dict
+
+[Script]
+
+[MITM]
+hostname = -*.edward666.xyz,api.douban.com,ap.dongqiudi.com,webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com,g1.tagtic.cn,erbingeditor.diershoubing.com,api.petkit.cn
