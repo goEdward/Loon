@@ -10,8 +10,10 @@ DOMAIN,api.immtel.co,DIRECT
 DOMAIN-KEYWORD,paypal,DIRECT
 
 [Rewrite]
-# 豆瓣 api.douban.com
+# 豆瓣 //api.douban.com,img3.doubanio.com,qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
+
 # 小佩宠物 api.petkit.cn
 ^https?:\/\/api\.petkit\.cn\/6\/\/device\/relatedProductsInfo reject-dict
 # 二柄 erbingeditor.diershoubing.com
@@ -27,4 +29,4 @@ DOMAIN-KEYWORD,paypal,DIRECT
 [Script]
 
 [MITM]
-hostname = -*.edward666.xyz,api.douban.com,ap.dongqiudi.com,webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com,g1.tagtic.cn,erbingeditor.diershoubing.com,api.petkit.cn
+hostname = -*.edward666.xyz,api.douban.com,img3.doubanio.com,qnmob3.doubanio.com,ap.dongqiudi.com,webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com,g1.tagtic.cn,erbingeditor.diershoubing.com,api.petkit.cn
