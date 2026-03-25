@@ -19,18 +19,17 @@ DOMAIN,beacon.sina.com.cn,REJECT
 # DOMAIN,alog.sina.com.cn,REJECT
 
 [Rewrite]
-# 豆瓣 //api.douban.com,img3.doubanio.com,qnmob3.doubanio.com
-^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
-^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
-
 # 小佩宠物 api.petkit.cn
 ^https?:\/\/api\.petkit\.cn\/6\/\/device\/relatedProductsInfo reject-dict
 # 二柄 erbingeditor.diershoubing.com
 ^https:\/\/erbingeditor\.diershoubing\.com\/4\/ reject-dict
 # NGA g1.tagtic.cn
 ^https:\/\/g1\.tagtic\.cn reject-dict
-# 懂球帝 ap.dongqiudi.com
+
+# 懂球帝 ap.dongqiudi.com,ap.dongdianqiu.com
 ^https?:\/\/ap\.dongqiudi\.com\/plat\/v reject-dict
+^https?:\/\/ap\.dongdianqiu\.com\/plat reject-dict
+
 # 招商银行 webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com
 ^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v\d\/func\/getmarketconfig reject-dict
 ^https?:\/\/az1mbasecc\.bas\.cmbchina\.com\/Edge\/api\/mlife\.clientface\.clientservice\.api\.advertiseService\/preCacheAdvertiseSec reject-dict
@@ -38,4 +37,4 @@ DOMAIN,beacon.sina.com.cn,REJECT
 [Script]
 
 [MITM]
-hostname = -*.edward666.xyz,api.douban.com,img3.doubanio.com,qnmob3.doubanio.com,ap.dongqiudi.com,webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com,g1.tagtic.cn,erbingeditor.diershoubing.com,api.petkit.cn
+hostname = ap.dongqiudi.com,ap.dongdianqiu.com,webappcfg.paas.cmbchina.com,az1mbasecc.bas.cmbchina.com,g1.tagtic.cn,erbingeditor.diershoubing.com,api.petkit.cn
