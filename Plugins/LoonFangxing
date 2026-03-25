@@ -1,0 +1,24 @@
+#!name = LoonFangxing
+#!desc = LoonFangxing
+#!author = https://github.com/goEdward/Loon
+#!icon = https://github.com/goEdward/Loon/blob/main/Icons/app/blockads.png?raw=true
+#!date = 2024-10-18 10:25
+
+[Rule]
+DOMAIN-SUFFIX,edward666.xyz,DIRECT
+DOMAIN,api.immtel.co,DIRECT
+DOMAIN-KEYWORD,paypal,DIRECT
+
+# 微信dns
+DOMAIN,aedns.weixin.qq.com,DIRECT
+DOMAIN,dns.weixin.qq.com.cn,DIRECT
+DOMAIN,short.weixin.qq.com,DIRECT
+DOMAIN,long.weixin.qq.com,DIRECT
+
+# 广告联盟放行
+DOMAIN,api-access.pangolin-sdk-toutiao-b.com,DIRECT
+DOMAIN-SUFFIX,pangolin-sdk-toutiao-b.com,DIRECT
+DOMAIN,probe.icloud.com,DIRECT
+DOMAIN-SUFFIX,oth.eve.mdt.qq.com,DIRECT
+DOMAIN,h.trace.qq.com,DIRECT
+DOMAIN,btrace.qq.com,DIRECT
