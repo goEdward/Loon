@@ -9,6 +9,15 @@ DOMAIN-SUFFIX,edward666.xyz,DIRECT
 DOMAIN,api.immtel.co,DIRECT
 DOMAIN-KEYWORD,paypal,DIRECT
 
+# 新浪财经 *.sina.com.cn, *.sina.cn
+DOMAIN,sax.sina.com.cn,REJECT
+DOMAIN,sax.sina.com.hk,REJECT
+DOMAIN,sdkapp.mobile.sina.cn,REJECT
+DOMAIN,ad.sina.com.cn,REJECT
+DOMAIN,beacon.sina.com.cn,REJECT
+# DOMAIN,logs.sina.cn,REJECT
+# DOMAIN,alog.sina.com.cn,REJECT
+
 [Rewrite]
 # 豆瓣 //api.douban.com,img3.doubanio.com,qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
