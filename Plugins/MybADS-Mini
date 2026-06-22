@@ -1,0 +1,22 @@
+#!name = MybADS-Mini
+#!desc = MybADS-Mini
+#!author = https://github.com/goEdward/Loon
+#!icon = https://github.com/goEdward/Loon/blob/main/Icons/app/blockads.png?raw=true
+#!date = 2024-10-18 10:25
+
+[Rule]
+DOMAIN-SUFFIX,edward666.xyz,DIRECT
+DOMAIN-KEYWORD,paypal,DIRECT
+IP-CIDR,194.221.250.50/32,REJECT,no-resolve
+
+[Rewrite]
+
+# 懂球帝 ap.dongqiudi.com,ap.dongdianqiu.com
+^https?:\/\/ap\.dongqiudi\.com\/plat\/v reject-dict
+^https?:\/\/ap\.dongdianqiu\.com\/plat reject-dict
+
+# 金十数据 jad-api.jin10.com
+^https?:\/\/jad-api\.jin10\.com\/ad reject-dict
+
+[MITM]
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com
