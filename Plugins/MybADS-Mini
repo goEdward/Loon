@@ -24,4 +24,4 @@ IP-CIDR,194.221.250.50/32,REJECT,no-resolve
 ^https?:\/\/api\.douban\.com\/v2\/app_ads.+ reject-dict
 
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,api.douban.com,img3.doubanio.com,qnmob3.doubanio.com
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,api.douban.com
