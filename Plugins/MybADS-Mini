@@ -8,7 +8,10 @@
 DOMAIN-SUFFIX,edward666.xyz,DIRECT
 DOMAIN-KEYWORD,paypal,DIRECT
 IP-CIDR,194.221.250.50/32,REJECT,no-resolve
+# 豆瓣 
 DOMAIN,mi.gdt.qq.com,REJECT
+IP-CIDR,119.29.29.98/32,REJECT,no-resolve
+IP-CIDR,119.29.29.99/32,REJECT,no-resolve
 
 [Rewrite]
 
