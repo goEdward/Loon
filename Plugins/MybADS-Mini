@@ -8,6 +8,7 @@
 DOMAIN-SUFFIX,edward666.xyz,DIRECT
 DOMAIN-KEYWORD,paypal,DIRECT
 IP-CIDR,194.221.250.50/32,REJECT,no-resolve
+DOMAIN,mi.gdt.qq.com,REJECT
 
 [Rewrite]
 
@@ -21,14 +22,7 @@ IP-CIDR,194.221.250.50/32,REJECT,no-resolve
 # 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
 # ^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
-^https?:\/\/api\.douban\.com\/v2\/app_ads.+ reject-dict
-
-^https?:\/\/api\.douban\.com\/v2\/app_ads\/splash - reject-dict
-^https?:\/\/api\.douban\.com\/b.*\/common_ads\?.* - reject-dict
-^https?:\/\/img\d\.doubanio\.com\/view\/dale-online\/dale_ad\/ - reject
-^https?:\/\/frodo.douban.com\/api\/v2\/movie\/banner - reject
-^https?:\/\/erebor\.douban\.com\/count\/\?ad= - reject
-^https?+:\/\/api\.douban\.com\/v\d\/app_ads\/ - reject-200
+# ^https?:\/\/api\.douban\.com\/v2\/app_ads.+ reject-dict
 
 [MITM]
 hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,api.douban.com
