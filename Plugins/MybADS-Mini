@@ -8,6 +8,11 @@
 DOMAIN-SUFFIX,edward666.xyz,DIRECT
 DOMAIN-KEYWORD,paypal,DIRECT
 IP-CIDR,194.221.250.50/32,REJECT,no-resolve
+# 微博开屏广告
+DOMAIN, huodong.weibo.cn, REJECT
+DOMAIN-SUFFIX, biz.weibo.com, REJECT
+# 微博请求放行
+DOMAIN-SUFFIX, uve.weibo.com, DIRECT
 
 [Rewrite]
 
@@ -18,5 +23,15 @@ IP-CIDR,194.221.250.50/32,REJECT,no-resolve
 # 金十数据 jad-api.jin10.com
 ^https?:\/\/jad-api\.jin10\.com\/ad reject-dict
 
+# 微博开屏广告 //*.uve.weibo.com
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime reject-dict
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) reject-dict
+
+[Script]
+# 开屏广告 //*.uve.weibo.com
+http-response ^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 preload
+http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 sdkad
+http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 wbapplua
+
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com
