@@ -28,5 +28,8 @@ IP-CIDR,119.29.29.99/32,REJECT,no-resolve
 # ^https?:\/\/api\.douban\.com\/v2\/app_ads.+ reject-dict
 ^https:\/\/api\.douban\.com\/v\d\/app_ads\/splash reject-dict
 
+[Script]
+http-response ^https?:\/\/m\.douban\.com\/(home_guide|movie|tv|book|group|music) script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/douban.js, requires-body=true, timeout=10, tag=豆瓣网页去广告
+
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,api.douban.com
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,api.douban.com,m.douban.com
