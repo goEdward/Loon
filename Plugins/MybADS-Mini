@@ -14,6 +14,13 @@ DOMAIN-SUFFIX, biz.weibo.com, REJECT
 # 微博请求放行
 DOMAIN-SUFFIX, uve.weibo.com, DIRECT
 
+# 新浪财经 *.sina.com.cn, *.sina.cn
+DOMAIN,sax.sina.com.cn,REJECT
+DOMAIN,sax.sina.com.hk,REJECT
+DOMAIN,sdkapp.mobile.sina.cn,REJECT
+DOMAIN,ad.sina.com.cn,REJECT
+DOMAIN,beacon.sina.com.cn,REJECT
+
 [Rewrite]
 
 # 懂球帝 ap.dongqiudi.com,ap.dongdianqiu.com
@@ -34,4 +41,4 @@ http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php scr
 http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 wbapplua
 
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com,*.sina.com.cn,*.sina.cn
