@@ -17,9 +17,16 @@ DOMAIN-SUFFIX, uve.weibo.com, DIRECT
 # 新浪财经 *.sina.com.cn, *.sina.cn
 DOMAIN,sax.sina.com.cn,REJECT
 DOMAIN,sax.sina.com.hk,REJECT
-DOMAIN,sdkapp.mobile.sina.cn,REJECT
-DOMAIN,ad.sina.com.cn,REJECT
 DOMAIN,beacon.sina.com.cn,REJECT
+DOMAIN-SUFFIX,ad.sina.com.cn,REJECT
+DOMAIN-SUFFIX,ad4.sina.com.cn,REJECT
+DOMAIN-SUFFIX,adbox.sina.com.cn,REJECT
+DOMAIN-SUFFIX,dcads.sina.com.cn,REJECT
+DOMAIN-SUFFIX,saxn.sina.com.cn,REJECT
+DOMAIN-SUFFIX,saxs.sina.com.cn,REJECT
+DOMAIN-SUFFIX,sdkapp.mobile.sina.cn,REJECT
+DOMAIN-SUFFIX,sdkclick.mobile.sina.cn,REJECT
+DOMAIN-SUFFIX,adimg.mobile.sina.cn,REJECT
 
 [Rewrite]
 
@@ -34,6 +41,8 @@ DOMAIN,beacon.sina.com.cn,REJECT
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime reject-dict
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) reject-dict
 
+# 新浪财经 ad.cj.sina.cn
+^https?:\/\/ad\.cj\.sina\.cn\/(osa\/adpreload|fax\/impress) reject-200
 
 [Script]
 # 开屏广告 //*.uve.weibo.com
@@ -42,4 +51,4 @@ http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php scr
 http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 wbapplua
 
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com
+hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com,ad.cj.sina.cn
