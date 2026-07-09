@@ -12,11 +12,16 @@ DOMAIN-KEYWORD,paypal,DIRECT
 # 新浪财经 *.sina.com.cn, *.sina.cn
 DOMAIN,sax.sina.com.cn,REJECT
 DOMAIN,sax.sina.com.hk,REJECT
-DOMAIN,sdkapp.mobile.sina.cn,REJECT
-DOMAIN,ad.sina.com.cn,REJECT
 DOMAIN,beacon.sina.com.cn,REJECT
-# DOMAIN,logs.sina.cn,REJECT
-# DOMAIN,alog.sina.com.cn,REJECT
+DOMAIN-SUFFIX,ad.sina.com.cn,REJECT
+DOMAIN-SUFFIX,ad4.sina.com.cn,REJECT
+DOMAIN-SUFFIX,adbox.sina.com.cn,REJECT
+DOMAIN-SUFFIX,dcads.sina.com.cn,REJECT
+DOMAIN-SUFFIX,saxn.sina.com.cn,REJECT
+DOMAIN-SUFFIX,saxs.sina.com.cn,REJECT
+DOMAIN-SUFFIX,sdkapp.mobile.sina.cn,REJECT
+DOMAIN-SUFFIX,sdkclick.mobile.sina.cn,REJECT
+DOMAIN-SUFFIX,adimg.mobile.sina.cn,REJECT
 
 [Rewrite]
 # 小佩宠物 api.petkit.cn
@@ -36,6 +41,9 @@ DOMAIN,beacon.sina.com.cn,REJECT
 
 # 金十数据 jad-api.jin10.com
 ^https?:\/\/jad-api\.jin10\.com\/ad reject-dict
+
+# 新浪财经 ad.cj.sina.cn
+^https?:\/\/ad\.cj\.sina\.cn\/(osa\/adpreload|fax\/impress) reject-200
 
 [Script]
 
