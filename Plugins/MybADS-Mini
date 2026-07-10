@@ -29,6 +29,9 @@ DOMAIN-SUFFIX,sdkclick.mobile.sina.cn,REJECT
 DOMAIN-SUFFIX,adimg.mobile.sina.cn,REJECT
 
 [Rewrite]
+# 豆瓣 //api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
 
 # 懂球帝 ap.dongqiudi.com,ap.dongdianqiu.com
 ^https?:\/\/ap\.dongqiudi\.com\/plat\/v reject-dict
@@ -51,4 +54,4 @@ http-response ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php scr
 http-response ^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) script-path=https://rucu6.pages.dev/Scripts/weibo.js, requires-body=true, timeout=20, tag=移除开屏广告 wbapplua
 
 [MITM]
-hostname = jad-api.jin10.com,ap.dongqiudi.com,ap.dongdianqiu.com,*.uve.weibo.com,ad.cj.sina.cn
+hostname = jad-api.jin10.com, ap.dongqiudi.com, ap.dongdianqiu.com, *.uve.weibo.com, ad.cj.sina.cn, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com
